@@ -5,6 +5,7 @@ const middlewares = {
   // ERROR
   '/:path(!api)': () => console.log('Middleware for path except /api (FAILS!)'),
   '/:path*(!api)': () => console.log('Middleware for all paths except /api/* (FAILS!)'),
+  '/:path(!api)/:subpath*': () => console.log('Middleware for all paths except /api/* (with subpath) (FAILS!)'),
   '/(!api)': () => console.log('Middleware for path except /api (FAILS, though doesn\'t seem to be part of NEMO API)'),
 
   // workarounds
@@ -13,7 +14,7 @@ const middlewares = {
   '/:path((?!api)\\w+)/:subpath*': () => console.log('[WORKAROUND B] Middleware for all paths except /api/* (works)'),
   
   // additional ERROR: incorrectly matches /api/*
-  '/:path*((?!api)\\w+)': () => console.log('Middleware for all paths except /api/* (FAILS!)'),
+  '/:path*((?!api)\\w+)': () => console.log('Middleware for all paths except /api/* (FAILS!) (regex)'),
   
   '/:path*': [
     () => console.log('Middleware for all paths'),
