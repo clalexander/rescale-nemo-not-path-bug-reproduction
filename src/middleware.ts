@@ -26,6 +26,8 @@ const middlewares = {
       }
     },
   ],
+
+  '/((?!api).*)': () => console.log('Works!!!'),
 };
 
 export const middleware = createNEMO(middlewares);
